@@ -179,7 +179,7 @@ function draw(){
 function movePlayer(){
   var adiceNo=Math.round(random(1,6))
 
-  if(mousePressedOver(dice)){
+  if(mousePressedOver(dice)||touches.length>0){
   aboxNo=aboxNo+adiceNo
   console.log(aboxNo)
   console.log("ad"+adiceNo)
@@ -202,7 +202,7 @@ function movePlayer(){
   if(adiceNo===6){
     dice.addImage(dice6Img);dice.scale=0.25
   }
-
+touches=[]
 }
 
 if(adiceNo===6){chance=1}else{chance=chance+1}
@@ -216,7 +216,7 @@ if(aboxNo>100){
 function movePlayer2(){
   var bdiceNo=Math.round(random(1,6))
  
-  if(mousePressedOver(dice)){
+  if(mousePressedOver(dice)||touches.length>0){
   bboxNo=bboxNo+bdiceNo
   console.log(bboxNo)
   console.log("bd"+bdiceNo)
