@@ -158,10 +158,16 @@ function draw(){
   if(chance===1){
       movePlayer();
       mPlayer1();
+      fill(0)
+      textSize(20)
+      text("chance: PLAYER1",50,75)
     }
  if(chance!=1){
    mPlayer2()
    movePlayer2()
+   fill(0)
+   textSize(20)
+   text("chance: COMPUTER",50,75)
  }
   drawSprites();
  displayNumbers();
@@ -173,7 +179,7 @@ function draw(){
  line(350,200,300,350);
  line(350,150,450,300);
  line(100,150,200,300);
-
+ winner()
 }
 
 function movePlayer(){
@@ -202,10 +208,9 @@ function movePlayer(){
   if(adiceNo===6){
     dice.addImage(dice6Img);dice.scale=0.25
   }
-touches=[]
-}
-
+touches=[];
 if(adiceNo===6){chance=1}else{chance=chance+1}
+}
 
 if(aboxNo>100){
   aboxNo=aboxNo-adiceNo
@@ -239,8 +244,10 @@ function movePlayer2(){
   if(bdiceNo===6){
     dice.addImage(dice6Img);dice.scale=0.25
   }
+  touches=[];
+  if(bdiceNo===6){chance=2}else{chance=1}
 }
-if(bdiceNo===6){chance=2}else{chance=1}
+
 if(bboxNo>100){
   bboxNo=bboxNo-bdiceNo
 }
@@ -773,8 +780,6 @@ function mPlayer1(){
  if(aboxNo===100){
    player1.x=box100.x
    player1.y=box100.y
-   textSize(30)
-   text("YOU WON",(width/2),(height/2))
  }
  else{
    adiceNo=0
@@ -1194,8 +1199,6 @@ function mPlayer2(){
  if(bboxNo===100){
    player2.x=box100.x
    player2.y=box100.y
-   textSize(30)
-   text("YOU LOSE",(width/2),(height/2))
  }
  else{
    bdiceNo=0
@@ -1203,4 +1206,16 @@ function mPlayer2(){
 }
 function showtext(){
   text("u cnt do it",50,50)
+}
+function winner(){
+  if(aboxNo===100){
+    fill("white")
+    textSize(30)
+    text("YOU WON",200,350)
+  }
+  if(bboxNo===100){
+    fill("white")
+    textSize(30)
+    text("YOU LOST",200,350)
+  }
 }
